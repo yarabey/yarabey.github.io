@@ -7,9 +7,13 @@
 		<script type="text/javascript" src="js/explode.js"></script>
 	</head>
 	<body  ng-controller="chainBoomCtrl">
-		<div class="container">
-			<div class="cell {{cell.hp&&cell.hp>0?'alive':''}}" ng-repeat="cell in cells" ng-click="clickCell()">
-				<img ng-if="cell.hp&&cell.hp>0" ng-src="img/{{cell.hp}}hp.png"/>
+		<div class="wrapper">
+			<div class="title"><h1>ChainBoom</h1></div>
+			<div class="clicks">{{clicks}}</div>
+			<div class="container">
+				<div class="cell {{cell.hp&&cell.hp>0?'alive':''}}" ng-repeat="cell in cells" ng-click="clickCell()">
+					<img ng-if="cell.hp&&cell.hp>0" ng-src="img/{{cell.hp}}hp.png"/>
+				</div>
 			</div>
 		</div>
 	</body>

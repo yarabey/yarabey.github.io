@@ -8,7 +8,7 @@ chainBoomServices.factory('explode', function(){
 		_this.columns = cols;
 		_this.explodes = [];
 		_this.cellsCount = rows * cols;
-		_this.clicks = 5;
+		_this.$scope.clicks = 5;
 		_this.getMatrix = function() {
 			var arr = [];
 			for (var i = 0; i < _this.cellsCount/2; i++) {
@@ -23,13 +23,14 @@ chainBoomServices.factory('explode', function(){
 		_this.clickCell = function() {
 			var i = this.$index;
 			if (this.cell.hp == 1 || this.cell.hp == 2) {
-				if (_this.clicks > 0) {
+				if (_this.$scope.clicks > 0 || this.cell.bullet) {
 					this.cell.hp--;
 					if (this.cell.hp == 0) {
 						var cell = document.getElementsByClassName('cell')[i];
 						_startExplode(cell.offsetTop, cell.offsetLeft, cell.offsetWidth, cell.offsetHeight, i);
 						if (document.getElementsByClassName('alive').length < 2) {
 							_this.$scope.cells = _this.getMatrix();
+							_this.$scope.clicks = 5;
 							var bulls = document.getElementsByClassName('bullet');
 							while (bulls.length) {
 								bulls[0].parentElement.removeChild(bulls[0]);
@@ -38,13 +39,13 @@ chainBoomServices.factory('explode', function(){
 					}
 				}
 				if (this.cell.bullet && this.cell.interval) {
-					this.cell.bullet.parentElement.removeChild(this.cell.bullet);
+					this.cell.bullet.parentElement && this.cell.bullet.parentElement.removeChild(this.cell.bullet);
 					clearTimeout(this.cell.interval);
 					this.cell.interval = undefined;
 					this.cell.bullet = undefined;
 				}
 				else {
-					_this.clicks > 0 && _this.clicks--;
+					_this.$scope.clicks > 0 && _this.$scope.clicks--;
 				}
 			}
 		}
