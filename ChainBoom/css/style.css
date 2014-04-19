@@ -1,0 +1,56 @@
+.container {
+	width: 500px;
+	height: 745px;
+	margin: 20px auto;
+	border: 1px solid rgba(238, 228, 218, 0.35);
+	border-collapse: collapse;
+	overflow: hidden;
+	position:relative;
+}
+.cell {
+	display: inline-block;
+	width: 62.5px;
+	height: 62.5px;
+	background: rgba(238, 228, 218, 0.35);
+	margin: 0;
+	float: left;
+	cursor: pointer;
+}
+.cell:hover {
+	background: rgba(238, 228, 218, 0.55);
+}
+.cell:active {
+	background: rgba(238, 228, 218, 0.75);
+}
+.bullet {
+	background: red;
+	border-radius: 16px;
+	width: 8px;
+	height: 8px;
+	position: absolute;
+}
+.cell-wrap {
+	display: block;
+	padding-bottom: 62.5px;
+}
+.cell img {
+	height: 25px;
+	width: 25px;
+	padding: 19px;
+}
+
+@media screen and (max-width: 520px) {
+	.container {
+		width: 300px;
+		height: 450px;
+	}
+	.cell {
+		width: 37.5px;
+		height: 37.5px;
+	}
+	.cell img {
+		height: 15px;
+		width: 15px;
+		padding: 11.4px;
+	}
+}

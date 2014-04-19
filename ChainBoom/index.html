@@ -1,0 +1,16 @@
+<html ng-app="chainBoom">
+	<head>
+		<title>ChainBoom</title>
+		<link rel="stylesheet" href="css/style.css"/>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+		<script type="text/javascript" src="js/game.js"></script>
+		<script type="text/javascript" src="js/explode.js"></script>
+	</head>
+	<body  ng-controller="chainBoomCtrl">
+		<div class="container">
+			<div class="cell {{cell.hp&&cell.hp>0?'alive':''}}" ng-repeat="cell in cells" ng-click="clickCell()">
+				<img ng-if="cell.hp&&cell.hp>0" ng-src="img/{{cell.hp}}hp.png"/>
+			</div>
+		</div>
+	</body>
+</html>
