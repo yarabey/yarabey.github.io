@@ -22,7 +22,7 @@ chainBoomServices.factory('explode', function($cookies){
 			}
 			return _this.cells = arr;
 		};
-		_this.getMatrix = function(checkCookie = false) {
+		_this.getMatrix = function(checkCookie) {
 			var arr = [],
 				maxAll = _this.cellsCount * 0.75,
 				allCount = 0;
