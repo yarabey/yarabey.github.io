@@ -1,6 +1,6 @@
 var chainBoomServices = angular.module('chainBoomServices', []);
 
-chainBoomServices.factory('explode', function(){
+chainBoomServices.factory('explode', function($cookieStore){
 	function Explode(rows, cols, $scope) {
 		var _this = this;
 		_this.$scope = $scope;
@@ -72,7 +72,9 @@ chainBoomServices.factory('explode', function(){
 			// for (var i = 0; i < empty; i++) {
 				// arr.push({});
 			// }
-			return _this.cells = shuffleArray(arr);
+			_this.cells = shuffleArray(arr);
+			$cookieStore.put('points', _this.cells);
+			return _this.cells;
 		}
 		_this.clickCell = function() {
 			var i = this.$index;
@@ -87,6 +89,8 @@ chainBoomServices.factory('explode', function(){
 							_this.$scope.clicks += _this.$scope.level > 5 ? 5 : _this.$scope.level;
 							_this.$scope.clicks = _this.$scope.clicks < 5 ? 5 : _this.$scope.clicks;
 							_this.$scope.level++;
+							$cookieStore.put('level', _this.$scope.level);
+							$cookieStore.put('points', _this.$scope.points);
 							_this.hps = [];
 							_this.$scope.cells = _this.getMatrix();
 							var bulls = document.getElementsByClassName('bullet');
