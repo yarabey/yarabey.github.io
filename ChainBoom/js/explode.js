@@ -73,7 +73,7 @@ chainBoomServices.factory('explode', function($cookies){
 				// arr.push({});
 			// }
 			_this.cells = $cookies.cells && $cookies.cells.length ? eval($cookies.cells) : shuffleArray(arr);
-			$cookies.cells = _this.cells;
+			$cookies.cells = JSON.stringify(_this.cells);
 			return _this.cells;
 		}
 		_this.clickCell = function() {
