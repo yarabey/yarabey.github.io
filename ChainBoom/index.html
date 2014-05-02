@@ -2,13 +2,19 @@
 	<head>
 		<title>ChainBoom</title>
 		<link rel="stylesheet" href="css/style.css"/>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/angular.cookies.min.js"></script>
 		<script type="text/javascript" src="js/game.js"></script>
 		<script type="text/javascript" src="js/explode.js"></script>
+		<script type="text/javascript" src="js/customLevels.js"></script>
 	</head>
 	<body  ng-controller="chainBoomCtrl">
 		<div class="wrapper">
-			<div class="title"><h1>ChainBoom</h1></div>
+			<div class="title">
+				<h1>ChainBoom</h1>
+				<div class="level">{{level}}</div>
+				<div class="points">{{points}}</div>
+			</div>
 			<div class="clicks">{{clicks}}</div>
 			<div class="container">
 				<div class="cell {{cell.hp&&cell.hp>0?'alive':''}}" ng-repeat="cell in cells" ng-click="clickCell()">
