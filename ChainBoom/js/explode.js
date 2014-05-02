@@ -22,7 +22,7 @@ chainBoomServices.factory('explode', function($cookies){
 			}
 			return _this.cells = arr;
 		};
-		_this.getMatrix = function() {
+		_this.getMatrix = function(checkCookie = false) {
 			var arr = [],
 				maxAll = _this.cellsCount * 0.75,
 				allCount = 0;
@@ -72,7 +72,7 @@ chainBoomServices.factory('explode', function($cookies){
 			// for (var i = 0; i < empty; i++) {
 				// arr.push({});
 			// }
-			_this.cells = $cookies.cells && $cookies.cells.length ? eval($cookies.cells) : shuffleArray(arr);
+			_this.cells = checkCookie && $cookies.cells && $cookies.cells.length ? eval($cookies.cells) : shuffleArray(arr);
 			$cookies.cells = JSON.stringify(_this.cells);
 			return _this.cells;
 		}
