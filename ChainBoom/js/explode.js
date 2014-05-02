@@ -9,7 +9,7 @@ chainBoomServices.factory('explode', function($cookies){
 		_this.explodes = [];
 		_this.hps = [];
 		_this.cellsCount = rows * cols;
-		_this.$scope.clicks = 5;
+		_this.$scope.clicks = $cookies.clicks ? parseInt($cookies.clicks) : 5;
 		_this.width = parseInt(document.getElementsByClassName('container')[0].offsetWidth)/rows;
 		_this.speed = _this.width/50*4;
 		_this.getCustomLevel = function(){
@@ -91,6 +91,7 @@ chainBoomServices.factory('explode', function($cookies){
 							_this.$scope.level++;
 							$cookies.level = _this.$scope.level;
 							$cookies.points = _this.$scope.points;
+							$cookies.clicks = _this.$scope.clicks;
 							_this.hps = [];
 							_this.$scope.cells = _this.getMatrix();
 							var bulls = document.getElementsByClassName('bullet');
