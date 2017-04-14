@@ -2,18 +2,14 @@ var chainBoomServices = angular.module('chainBoomServices', []);
 var allExplodes = [];
 var isRestartRequired = false;
 
-function checkRestart(_this, $cookies, $scope) {
+function checkRestart(_this, $cookies, $scope, restart) {
 	if (allExplodes.length === 0 && $scope.clicks === 0) {
-		isRestartRequired = true;
-		__this.cells = null;
-		__this.$scope.level = 0;
+		__this.cells = [];
+		__this.$scope.level = -1;
 		__this.$scope.points = 0;
 		__this.$scope.clicks = 0;
 		
-		document.cookie = 'clicks=';
-		document.cookie = 'cells=';
-		document.cookie = 'level=';
-		document.cookie = 'points=';
+		restart();
 	}
 }
 
@@ -48,8 +44,24 @@ chainBoomServices.factory('explode', function($cookies){
 			return _this.cells = arr;
 		};
 		setInterval(function () {
-			checkRestart(_this, $cookies, _this.$scope)
+			checkRestart(_this, $cookies, _this.$scope, restart)
 		}, 100);
+		
+		function restart() {
+			_this.$scope.points += _this.$scope.clicks * _this.$scope.level;
+			_this.$scope.clicks += _this.$scope.level > 5 ? 5 : _this.$scope.level;
+			_this.$scope.clicks = _this.$scope.clicks < 5 ? 5 : _this.$scope.clicks;
+			_this.$scope.level++;
+			$cookies.level = _this.$scope.level;
+			$cookies.points = _this.$scope.points;
+			$cookies.clicks = _this.$scope.clicks;
+			_this.hps = [];
+			_this.$scope.cells = _this.getMatrix();
+			var bulls = document.getElementsByClassName('bullet');
+			while (bulls.length) {
+				bulls[0].parentElement.removeChild(bulls[0]);
+			}
+		};
 		_this.getMatrix = function(checkCookie) {
 			var arr = [],
 				maxAll = _this.cellsCount * 0.75,
