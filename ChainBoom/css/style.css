@@ -11,6 +11,13 @@ body {
 	font-size: 1.5em;
 	margin: 0;
 }
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
 .clicks:before {
 	content: "REMAINING";
 }
@@ -28,6 +35,10 @@ body {
 .clicks {
 	float: right;
 	width: 29%;
+	padding: 0 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 .level {
 	min-width: 24%;
@@ -38,6 +49,8 @@ body {
 	min-width: 24%;
 	max-width: 58%;
 	padding: 6px 3px;
+	word-break: break-all;
+	word-break: break-word;
 }
 .clicks:after {
 	content: "CLICKS";
