@@ -1,7 +1,7 @@
 var chainBoomServices = angular.module('chainBoomServices', []);
 var allExplodes = [];
 
-functions checkRestart($scope) {
+function checkRestart($scope) {
 	if (allExplodes.length === 0 && $scope.clicks === 0) {
 		$cookies.cells = null;
 		$cookies.level = null;
