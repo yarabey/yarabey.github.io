@@ -1,13 +1,19 @@
 var chainBoomServices = angular.module('chainBoomServices', []);
 var allExplodes = [];
 
-function checkRestart($cookies, $scope) {
+function checkRestart(_this, $cookies, $scope) {
 	if (allExplodes.length === 0 && $scope.clicks === 0) {
+		_this.cells = null;
+		_this.$scope.level = 0;
+		_this.$scope.points = 0;
+		_this.$scope.clicks = 0;
+		
+		$cookies.cells = '';
+		$cookies.level = 0;
+		$cookies.points = 0;
+		$cookies.clicks = 5;
+		
 		setTimeout(function () {
-			$cookies.cells = '';
-			$cookies.level = 0;
-			$cookies.points = 0;
-			$cookies.clicks = 5;
 			window.location.reload();
 		}, 200);
 	}
@@ -36,7 +42,7 @@ chainBoomServices.factory('explode', function($cookies){
 			return _this.cells = arr;
 		};
 		setInterval(function () {
-			checkRestart($cookies, _this.$scope)
+			checkRestart(_this, $cookies, _this.$scope)
 		}, 100);
 		_this.getMatrix = function(checkCookie) {
 			var arr = [],
