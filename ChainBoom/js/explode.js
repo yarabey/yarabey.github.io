@@ -5,7 +5,7 @@ var isRestartRequired = false;
 function checkRestart(_this, $cookies, $scope, restart) {
 	if (allExplodes.length === 0 && $scope.clicks === 0) {
 		_this.cells = [];
-		_this.$scope.level = -1;
+		_this.$scope.level = 0;
 		_this.$scope.points = 0;
 		_this.$scope.clicks = 0;
 		
