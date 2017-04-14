@@ -7,7 +7,9 @@ function checkRestart($cookies, $scope) {
 		$cookies.level = 0;
 		$cookies.points = 0;
 		$cookies.clicks = 5;
-		window.location.reload();
+		setTimeout(function () {
+			window.location.reload();
+		}, 200);
 	}
 }
 
