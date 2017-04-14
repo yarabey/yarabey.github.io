@@ -1,7 +1,7 @@
 var chainBoomServices = angular.module('chainBoomServices', []);
 var allExplodes = [];
 
-function checkRestart($scope) {
+function checkRestart($cookies, $scope) {
 	if (allExplodes.length === 0 && $scope.clicks === 0) {
 		$cookies.cells = null;
 		$cookies.level = null;
@@ -34,7 +34,7 @@ chainBoomServices.factory('explode', function($cookies){
 			return _this.cells = arr;
 		};
 		setInterval(function () {
-			checkRestart(_this.$scope)
+			checkRestart($cookies, _this.$scope)
 		}, 100);
 		_this.getMatrix = function(checkCookie) {
 			var arr = [],
