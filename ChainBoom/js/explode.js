@@ -4,10 +4,10 @@ var isRestartRequired = false;
 
 function checkRestart(_this, $cookies, $scope, restart) {
 	if (allExplodes.length === 0 && $scope.clicks === 0) {
-		__this.cells = [];
-		__this.$scope.level = -1;
-		__this.$scope.points = 0;
-		__this.$scope.clicks = 0;
+		_this.cells = [];
+		_this.$scope.level = -1;
+		_this.$scope.points = 0;
+		_this.$scope.clicks = 0;
 		
 		restart();
 	}
