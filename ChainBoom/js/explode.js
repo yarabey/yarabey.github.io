@@ -61,6 +61,7 @@ chainBoomServices.factory('explode', function($cookies){
 			while (bulls.length) {
 				bulls[0].parentElement.removeChild(bulls[0]);
 			}
+			allExplodes = [];
 		};
 		_this.getMatrix = function(checkCookie) {
 			var arr = [],
