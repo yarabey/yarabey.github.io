@@ -10,12 +10,15 @@
 	</head>
 	<body  ng-controller="chainBoomCtrl">
 		<div class="wrapper">
-			<div class="title">
-				<h1>ChainBoom</h1>
-				<div class="level">{{level}}</div>
-				<div class="points">{{points}}</div>
+			<div class="header">
+				<div class="title">
+					<h1>ChainBoom</h1>
+					<div class="level">{{level}}</div>
+					<div class="points">{{points}}</div>
+				</div>
+				<div class="clicks">{{clicks}}</div>
 			</div>
-			<div class="clicks">{{clicks}}</div>
+			
 			<div class="container">
 				<div class="cell {{cell.hp&&cell.hp>0?'alive':''}}" ng-repeat="cell in cells" ng-click="clickCell()">
 					<img ng-if="cell.hp&&cell.hp>0" ng-src="img/{{cell.hp}}hp.png"/>
