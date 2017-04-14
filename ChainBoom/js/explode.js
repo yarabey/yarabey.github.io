@@ -1,4 +1,15 @@
 var chainBoomServices = angular.module('chainBoomServices', []);
+var allExplodes = [];
+
+functions checkRestart($scope) {
+	if (allExplodes.length === 0 && $scope.clicks === 0) {
+		$cookies.cells = null;
+		$cookies.level = null;
+		$cookies.points = null;
+		$cookies.clicks = null;
+		window.location.reload();
+	}
+}
 
 chainBoomServices.factory('explode', function($cookies){
 	function Explode(rows, cols, $scope) {
@@ -122,8 +133,10 @@ chainBoomServices.factory('explode', function($cookies){
 				document.getElementsByClassName('container')[0].appendChild(el);
 				el.style.top = t - el.offsetHeight/2;
 				el.style.left = l - el.offsetWidth/2;
-				_this.explodes.push(new explodeClass(el, i, index));
 				
+				var explode = new explodeClass(el, i, index);
+				_this.explodes.push(explode);
+				allExplodes.push(explode);
 			}
 		}
 		
@@ -164,6 +177,8 @@ chainBoomServices.factory('explode', function($cookies){
 				if (Math.abs(_expl.prevVal - (d.left ? newLeft : newTop)) + _this.width/2 >= _this.width) {
 					if (_expl.cellsOnWay.length == 0) {
 						clearTimeout(move);
+						allExplodes.splice(allExplodes.indexOf(explode), 1);
+						checkRestart(_this.$scope);
 						return _expl.el.parentElement && _expl.el.parentElement.removeChild(_expl.el);
 					}
 					_expl.prevVal = d.left ? _expl.prevVal + d.left*_this.width : _expl.prevVal + d.top*_this.width;
