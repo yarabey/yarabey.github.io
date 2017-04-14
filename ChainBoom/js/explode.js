@@ -33,6 +33,9 @@ chainBoomServices.factory('explode', function($cookies){
 			}
 			return _this.cells = arr;
 		};
+		setInterval(function () {
+			checkRestart(_this.$scope)
+		}, 100);
 		_this.getMatrix = function(checkCookie) {
 			var arr = [],
 				maxAll = _this.cellsCount * 0.75,
@@ -177,8 +180,7 @@ chainBoomServices.factory('explode', function($cookies){
 				if (Math.abs(_expl.prevVal - (d.left ? newLeft : newTop)) + _this.width/2 >= _this.width) {
 					if (_expl.cellsOnWay.length == 0) {
 						clearTimeout(move);
-						allExplodes.splice(allExplodes.indexOf(explode), 1);
-						checkRestart(_this.$scope);
+						allExplodes.splice(allExplodes.indexOf(_expl), 1);
 						return _expl.el.parentElement && _expl.el.parentElement.removeChild(_expl.el);
 					}
 					_expl.prevVal = d.left ? _expl.prevVal + d.left*_this.width : _expl.prevVal + d.top*_this.width;
