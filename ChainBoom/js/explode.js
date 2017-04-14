@@ -1,19 +1,10 @@
 var chainBoomServices = angular.module('chainBoomServices', []);
 var allExplodes = [];
 var isRestartRequired = false;
-var __this, _$cookies, _$scope;
 
 function checkRestart(_this, $cookies, $scope) {
 	if (allExplodes.length === 0 && $scope.clicks === 0) {
 		isRestartRequired = true;
-		__this = _this;
-		_$cookies = $cookies;
-		_$scope = $scope;
-	}
-}
-
-setInterval(function () {
-	if (isRestartRequired) {
 		__this.cells = null;
 		__this.$scope.level = 0;
 		__this.$scope.points = 0;
@@ -23,10 +14,14 @@ setInterval(function () {
 		_$cookies.level = 0;
 		_$cookies.points = 0;
 		_$cookies.clicks = 5;
-		
+	}
+}
+
+setInterval(function () {
+	if (isRestartRequired) {
 		setTimeout(function () {
 			window.location.reload();
-		}, 200);
+		}, 500);
 	}
 }, 200);
 
