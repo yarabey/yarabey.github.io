@@ -9,7 +9,14 @@ function checkRestart(_this, $cookies, $scope, restart) {
 		_this.$scope.points = 0;
 		_this.$scope.clicks = 0;
 		
-		restart();
+		$cookies.cells = '';
+		$cookies.level = '';
+		$cookies.points = '';
+		$cookies.clicks = '';
+		
+		setTimeout(function () {
+			window.location.reload();
+		}, 200);
 	}
 }
 
