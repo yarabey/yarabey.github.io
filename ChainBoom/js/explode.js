@@ -10,10 +10,10 @@ function checkRestart(_this, $cookies, $scope) {
 		__this.$scope.points = 0;
 		__this.$scope.clicks = 0;
 		
-		_$cookies.cells = '';
-		_$cookies.level = 0;
-		_$cookies.points = 0;
-		_$cookies.clicks = 5;
+		document.cookie = 'clicks=';
+		document.cookie = 'cells=';
+		document.cookie = 'level=';
+		document.cookie = 'points=';
 	}
 }
 
@@ -21,7 +21,7 @@ setInterval(function () {
 	if (isRestartRequired) {
 		setTimeout(function () {
 			window.location.reload();
-		}, 500);
+		}, 200);
 	}
 }, 200);
 
