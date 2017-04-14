@@ -3,10 +3,10 @@ var allExplodes = [];
 
 function checkRestart($cookies, $scope) {
 	if (allExplodes.length === 0 && $scope.clicks === 0) {
-		$cookies.cells = null;
-		$cookies.level = null;
-		$cookies.points = null;
-		$cookies.clicks = null;
+		$cookies.cells = '';
+		$cookies.level = 0;
+		$cookies.points = 0;
+		$cookies.clicks = 5;
 		window.location.reload();
 	}
 }
