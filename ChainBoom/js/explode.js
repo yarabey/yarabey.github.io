@@ -13,15 +13,7 @@ function checkRestart(_this, $cookies, $scope, restart) {
 	}
 }
 
-setInterval(function () {
-	if (isRestartRequired) {
-		setTimeout(function () {
-			window.location.reload();
-		}, 200);
-	}
-}, 200);
-
-chainBoomServices.factory('explode', function($cookies){
+chainBoomServices.factory('explode', function($cookies, $interval){
 	function Explode(rows, cols, $scope) {
 		var _this = this;
 		_this.$scope = $scope;
@@ -43,7 +35,7 @@ chainBoomServices.factory('explode', function($cookies){
 			}
 			return _this.cells = arr;
 		};
-		setInterval(function () {
+		$interval(function () {
 			checkRestart(_this, $cookies, _this.$scope, restart)
 		}, 100);
 		
