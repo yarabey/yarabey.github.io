@@ -3,11 +3,11 @@ var allExplodes = [];
 
 function checkRestart($cookies, $scope) {
 	if (allExplodes.length === 0 && $scope.clicks === 0) {
-		$cookies.cells = '';
-		$cookies.level = 0;
-		$cookies.points = 0;
-		$cookies.clicks = 5;
 		setTimeout(function () {
+			$cookies.cells = '';
+			$cookies.level = 0;
+			$cookies.points = 0;
+			$cookies.clicks = 5;
 			window.location.reload();
 		}, 200);
 	}
