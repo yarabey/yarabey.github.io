@@ -78,13 +78,11 @@ body {
 	margin: 0 auto;
 }
 .container{
-	height: 751px;
-	border-collapse: collapse;
+	height: 504px;
 	overflow: hidden;
 	position:relative;
 }
 .cell {
-	display: inline-block;
 	width: 42px;
 	height: 42px;
 	background: rgba(238, 228, 218, 0.35);
@@ -117,18 +115,18 @@ body {
 
 @media screen and (max-width: 520px) {
 	.container, .wrapper {
-		width: 304px;
+		width: 360px;
 	}
 	.container {
-		height: 456px;
+		height: 360px;
 	}
 	.cell {
-		width: 25px;
-		height: 25px;
+		width: 30px;
+		height: 30px;
 	}
 	.cell img {
-		height: 20px;
-		width: 20px;
+		height: 23px;
+		width: 23px;
 		padding: 3px;
 	}
 	.bullet {
